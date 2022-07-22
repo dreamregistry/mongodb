@@ -66,3 +66,7 @@ output "MONGO_URI" {
   sensitive = true
   value     = "mongodb+srv://${mongodbatlas_database_user.dbuser.username}:${mongodbatlas_database_user.dbuser.password}@${substr(data.mongodbatlas_cluster.devcluster.connection_strings[0].standard_srv, 14, -1)}/${random_pet.dbname.id}"
 }
+
+output "MONGO_DATABASE_NAME" {
+  value = random_pet.dbname.id
+}
