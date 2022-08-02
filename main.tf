@@ -19,13 +19,13 @@ provider "mongodbatlas" {}
 
 
 data "mongodbatlas_project" "myproject" {
-  project_id = var.project_id
+  project_id = var.mongodb_atlas_project_id
 }
 
 
 data "mongodbatlas_cluster" "devcluster" {
   project_id = data.mongodbatlas_project.myproject.id
-  name       = var.cluster_name
+  name       = var.mongodb_atlas_cluster_name
 }
 
 resource "random_pet" "username" {}
@@ -55,7 +55,7 @@ resource "mongodbatlas_database_user" "dbuser" {
 
 
   scopes {
-    name = "DEV"
+    name = var.mongodb_atlas_cluster_name
     type = "CLUSTER"
   }
 
