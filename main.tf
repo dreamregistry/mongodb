@@ -48,12 +48,6 @@ resource "mongodbatlas_database_user" "dbuser" {
     database_name = random_pet.dbname.id
   }
 
-  roles {
-    role_name     = "readAnyDatabase"
-    database_name = "admin"
-  }
-
-
   scopes {
     name = var.mongodb_atlas_cluster_name
     type = "CLUSTER"
